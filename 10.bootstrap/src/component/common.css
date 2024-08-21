@@ -1,0 +1,31 @@
+footer {
+    
+    padding : 10px;
+    padding-left: 50px;
+    font-size: small;
+    background-color: rgba(53, 118, 122, 0.781);
+    text-align: left;
+
+    
+
+}
+
+header {
+    display: flex;
+    
+}
+
+.logog {
+    width: 150px;
+    height: 150px;  
+    
+}
+
+.title {
+    margin: 0 auto;
+    padding-top: 30px;
+    font-size: 42px;
+}
+.login {
+    padding-right: 10px;
+}
