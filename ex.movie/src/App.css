@@ -1,0 +1,91 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.seating-chart {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* 한 줄에 10개의 좌석 */
+  gap: 15px;
+  margin-top: 20px;
+  justify-items: center;
+}
+
+.seat-button {
+  width: 50px;
+  height: 50px;
+  background-color: #ccc;
+  border: 2px solid #999;
+  border-radius: 15px; /* 좌석을 둥글게 */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.seat-button:hover {
+  background-color: #6c7ae0; /* 마우스 호버 시 색상 변경 */
+  transform: scale(1.1); /* 마우스 호버 시 약간 확대 */
+}
+
+.selected-seat {
+  background-color: #e06c75; /* 선택된 좌석 색상 */
+  color: white;
+  border-color: #e06c75;
+}
+
+.purchase-form {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  width: 300px;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 10px;
+}
