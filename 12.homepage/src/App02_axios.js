@@ -6,20 +6,16 @@ import pList from './data/ProductList';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import Detail from './pages/Detail';
 import axios from 'axios';
-import Cart from './pages/Cart';
 
 /*
-  ** 장바구니 만들기
-
-  * 외부 라이브러리 사용(Redux)
-  1) 설치 : npm install @reduxjs/toolkit react-redux
-  2) store폴더 만들고, store.js파일 만들기
-  3) index.js <Provider>로 감싸기
+  * ajax로 서버로부터 데이터 얻어오기
+    1. 설치하기 : npm i axios
 */
 function App() {
   let [clothes, setClothes] = useState(pList);
   let [clickCount, setClickCount] = useState(2);
 
+  // 페이지의 이동을 도와주는 함수
   let navigate = useNavigate();
 
   return (
@@ -44,7 +40,7 @@ function App() {
                 { 
                   clothes.map((p, i)=>{
                     return(
-                      <PListCol clothes={p} i={i+1} key={i}/>
+                      <PListCol clothes={p} i={i+1}/>
                     )
                   })
                 }
@@ -64,10 +60,17 @@ function App() {
                       alert('더이상 상품이 없습니다');
                    })
             }}>서버에서 데이터 가져오기</Button>
+            {/* 
+                * 서버로 보낼때
+                  axios.post('url',데이터)
+                  ex) axios.post('url',{name:'kim'})
+
+                * 동시에 요청을 여러개 할 때
+                  Promise.all( [axios.get('url'), axios.get('url'), axios.post('url',데이터)] )
+            */}
           </>
         }/>
         <Route path='/detail/:index' element={ <Detail clothes={clothes} bg="green" /> } />
-        <Route path='/cart' element={<Cart />} />
         <Route path='*' element={<div>없는 페이지 입니다.</div>} />
       </Routes>
     </div>
@@ -75,15 +78,9 @@ function App() {
 }
 
 function PListCol(props) {
-  const navigate = useNavigate();
-
-  const goDetail = () => {
-    navigate(`/detail/${props.i-1}`);
-  }
-  
   return (
     <>
-      <Col md={4} onClick={goDetail} style={{ cursor : 'pointer'}}>
+      <Col lg={4}>
         <img src={`${process.env.PUBLIC_URL}/img/clothes${props.i}.png`} />
         <h4>{props.clothes.title}</h4>
         <p>{props.clothes.price}</p>
